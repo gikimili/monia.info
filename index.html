@@ -4,87 +4,196 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index, follow">
-<title>MonIA — Support</title>
+<title>MonIA — L'IA qui fonctionne sans internet, sur votre iPhone</title>
+<meta name="description" content="MonIA est un assistant IA 100 % hors ligne pour iPhone : vos conversations restent sur votre téléphone. Sans compte, sans abonnement — achat unique.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:title" content="MonIA — L'IA qui fonctionne sans internet">
+<meta property="og:description" content="Un assistant IA privé, directement sur votre iPhone. En avion, à l'étranger, en zone blanche : MonIA répond. Sans compte ni abonnement.">
+<meta property="og:image" content="https://monia.info/assets/screen-chat-fr.png">
+<meta property="og:url" content="https://monia.info/">
+<meta property="og:type" content="website">
 <style>
-  :root { color-scheme: light dark; }
+  :root {
+    color-scheme: light dark;
+    --ink: #1c1c1e; --paper: #fff; --muted: #6e6e73;
+    --accent: #3a74ae; --accent-ink: #fff;
+    --card: #f5f6f8; --line: rgba(127,127,127,.25);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #e6e6e6; --paper: #0b0b0c; --muted: #9a9aa0; --card: #16161a; }
+  }
   * { box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-         line-height: 1.6; max-width: 720px; margin: 0 auto; padding: 24px 18px 64px;
-         color: #1c1c1e; background: #fff; -webkit-text-size-adjust: 100%; }
-  h1 { font-size: 1.6rem; line-height: 1.25; margin: 0 0 .25rem; }
-  h2 { font-size: 1.15rem; margin: 2rem 0 .5rem; }
-  .meta { color: #8a8a8e; font-size: .9rem; margin-bottom: 1.5rem; }
-  ul { padding-left: 1.2rem; } li { margin: .4rem 0; }
-  a { color: #0a66ff; word-break: break-word; }
-  strong { font-weight: 600; }
-  footer { margin-top: 3rem; font-size: .85rem; color: #8a8a8e;
-           border-top: 1px solid rgba(127,127,127,.25); padding-top: 1rem; }
-  @media (prefers-color-scheme: dark) {
-    body { color: #e6e6e6; background: #0b0b0c; }
-    a { color: #6ca8ff; }
-  }
+         line-height: 1.6; margin: 0; color: var(--ink); background: var(--paper);
+         -webkit-text-size-adjust: 100%; }
+  a { color: var(--accent); }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  /* Hero — dégradé de la marque (toujours sombre) */
+  .hero { background: linear-gradient(135deg, #0D1B38 0%, #162758 45%, #183E60 100%); color: #F5F8FF; }
+  .hero .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 32px; padding-top: 48px; padding-bottom: 56px; }
+  .hero-text { flex: 1 1 340px; }
+  .hero-shot { flex: 0 1 260px; margin: 0 auto; }
+  .hero-shot img { width: 100%; max-width: 280px; height: auto; display: block;
+                   border-radius: 24px; box-shadow: 0 24px 60px rgba(0,0,0,.45); }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+  .brand img { width: 44px; height: 44px; border-radius: 10px; }
+  .brand strong { font-size: 1.15rem; letter-spacing: .02em; }
+  .brand nav { margin-left: auto; font-size: .9rem; }
+  .brand nav a { color: #9EBCEC; text-decoration: none; margin-left: 16px; }
+  h1 { font-size: clamp(1.7rem, 4.5vw, 2.5rem); line-height: 1.2; margin: 0 0 .6rem; }
+  .tagline { font-size: 1.05rem; color: #c9d6ef; margin: 0 0 1.6rem; max-width: 34em; }
+  .cta { display: inline-block; background: #F5F8FF; color: #0D1B38; font-weight: 600;
+         padding: 12px 22px; border-radius: 12px; text-decoration: none; }
+  .cta-note { font-size: .85rem; color: #9EBCEC; margin-top: .6rem; }
+
+  /* Sections */
+  section { padding: 44px 0; }
+  section + section { border-top: 1px solid var(--line); }
+  h2 { font-size: 1.35rem; margin: 0 0 1.2rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card { background: var(--card); border-radius: 14px; padding: 18px 20px; }
+  .card h3 { margin: 0 0 .4rem; font-size: 1.02rem; }
+  .card p { margin: 0; font-size: .95rem; color: var(--muted); }
+  .card .pic { font-size: 1.6rem; line-height: 1; margin-bottom: .5rem; }
+
+  ol.steps { padding-left: 1.2rem; margin: 0; }
+  ol.steps li { margin: .7rem 0; }
+  ol.steps b { font-weight: 600; }
+  .steps-note { font-size: .9rem; color: var(--muted); }
+
+  details { border-bottom: 1px solid var(--line); padding: .7rem 0; }
+  details summary { cursor: pointer; font-weight: 600; }
+  details p { color: var(--muted); margin: .6rem 0 .2rem; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 48px; font-size: .85rem; color: var(--muted); }
+  footer a { color: var(--muted); }
 </style>
 </head>
 <body>
 
-<h1>MonIA</h1>
-<p class="meta">Assistant IA privé, 100&nbsp;% sur l'appareil, pour iPhone · Achat unique sur l'App&nbsp;Store</p>
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-text" style="flex-basis: 100%; margin-bottom: -8px;">
+      <div class="brand">
+        <img src="assets/apple-touch-icon.png" alt="" width="44" height="44">
+        <strong>MonIA</strong>
+        <nav>
+          <a href="support.html">Support</a>
+          <a href="en.html" lang="en">English</a>
+        </nav>
+      </div>
+    </div>
+    <div class="hero-text">
+      <h1>Votre assistant IA.<br>Même sans internet.</h1>
+      <p class="tagline">MonIA répond à vos questions directement sur votre iPhone — en avion, à l'étranger,
+      en zone blanche. Vos conversations ne quittent jamais votre téléphone.</p>
+      <!-- TODO publication : supprimer la mention « Disponible très prochainement » ci-dessous -->
+      <a class="cta" href="https://apps.apple.com/fr/app/id6783248212">Télécharger sur l'App&nbsp;Store</a>
+      <p class="cta-note">Achat unique 4,99&nbsp;€ · Sans abonnement · Disponible très prochainement</p>
+    </div>
+    <div class="hero-shot">
+      <img src="assets/screen-chat-fr.png" alt="Capture d'écran de MonIA : une conversation avec l'assistant IA sur iPhone" width="640" height="1389">
+    </div>
+  </div>
+</div>
 
-<p>MonIA fonctionne entièrement hors ligne après installation. Vos conversations restent sur votre
-appareil&nbsp;; nous ne collectons pas vos données.</p>
+<section>
+  <div class="wrap">
+    <h2>Pourquoi MonIA&nbsp;?</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="pic">✈️</div>
+        <h3>100&nbsp;% hors ligne</h3>
+        <p>L'intelligence artificielle est installée sur votre iPhone. Mode avion, montagne, plein océan&nbsp;:
+        MonIA répond, sans réseau et sans frais d'itinérance.</p>
+      </div>
+      <div class="card">
+        <div class="pic">🔒</div>
+        <h3>Privé par conception</h3>
+        <p>Rien n'est envoyé sur internet, rien n'est stocké ailleurs que chez vous. Pas de compte à créer,
+        pas de données collectées — ce n'est pas une promesse, c'est l'architecture même de l'app.</p>
+      </div>
+      <div class="card">
+        <div class="pic">💶</div>
+        <h3>Sans abonnement</h3>
+        <p>Vous payez une fois, l'app est à vous. Pas de mensualité, pas de crédits, pas de compte premium.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<h2>Support</h2>
-<p>Questions, retours ou signalement d'erreur de traduction&nbsp;:<br>
-<strong><a href="mailto:support@monia.info?subject=MonIA%20%E2%80%94%20Support">support@monia.info</a></strong><br>
-<strong><a href="tel:+33972164197">+33 9 72 16 41 97</a></strong></p>
+<section>
+  <div class="wrap">
+    <h2>Comment ça marche&nbsp;?</h2>
+    <ol class="steps">
+      <li><b>Téléchargez MonIA</b> sur l'App&nbsp;Store.</li>
+      <li><b>Laissez l'assistant s'installer.</b> Au premier lancement, MonIA installe son intelligence
+      artificielle sur votre téléphone (~1,6&nbsp;Go, une seule fois — l'app reste utilisable pendant ce temps).</li>
+      <li><b>Discutez, partout.</b> Rédiger, traduire, résumer un document, répondre à vos questions&nbsp;—
+      avec ou sans connexion.</li>
+    </ol>
+    <p class="steps-note">Astuce&nbsp;: un mode «&nbsp;Précision&nbsp;» optionnel télécharge un modèle plus
+    puissant (~3&nbsp;Go) pour les réponses qui demandent plus de finesse.</p>
+  </div>
+</section>
 
-<h2>Documents légaux</h2>
-<ul>
-  <li><a href="privacy_fr.html">Politique de confidentialité (FR)</a></li>
-  <li><a href="privacy_en.html">Privacy Policy (EN)</a></li>
-  <li><a href="terms_fr.html">Conditions générales d'utilisation (FR)</a></li>
-  <li><a href="terms_en.html">Terms of Use &amp; EULA (EN)</a></li>
-  <li><a href="open_source_notices.html">Open-Source Notices (EN)</a></li>
-</ul>
+<section>
+  <div class="wrap">
+    <h2>Questions fréquentes</h2>
+    <details>
+      <summary>Ça fonctionne vraiment sans connexion internet&nbsp;?</summary>
+      <p>Oui. Après l'installation initiale, MonIA n'a plus besoin d'internet&nbsp;: le modèle d'intelligence
+      artificielle tourne entièrement sur votre iPhone. Vous pouvez le vérifier en activant le mode avion.</p>
+    </details>
+    <details>
+      <summary>Où vont mes conversations et mes documents&nbsp;?</summary>
+      <p>Nulle part. Ils restent sur votre téléphone. MonIA n'a ni serveur de conversation, ni compte
+      utilisateur, ni publicité. Voir notre <a href="privacy_fr.html">politique de confidentialité</a>.</p>
+    </details>
+    <details>
+      <summary>Quelle différence avec ChatGPT&nbsp;?</summary>
+      <p>ChatGPT vit sur des serveurs&nbsp;: il faut une connexion, et vos échanges y transitent. MonIA vit
+      sur votre iPhone&nbsp;: moins encyclopédique qu'un géant du cloud, mais toujours disponible, totalement
+      privé, et sans abonnement.</p>
+    </details>
+    <details>
+      <summary>Pourquoi un achat unique plutôt qu'un abonnement&nbsp;?</summary>
+      <p>Parce que MonIA n'a pas de coûts de serveurs&nbsp;: l'IA tourne sur votre appareil. Vous payez
+      l'application une fois, c'est tout.</p>
+    </details>
+    <details>
+      <summary>Quel iPhone faut-il&nbsp;?</summary>
+      <p>Un iPhone sous iOS&nbsp;26 ou plus récent, avec environ 4&nbsp;Go d'espace libre pour l'assistant
+      standard.</p>
+    </details>
+    <details>
+      <summary>En quelles langues&nbsp;?</summary>
+      <p>MonIA est traduit en 13&nbsp;langues (français, anglais, allemand, espagnol, italien, néerlandais,
+      polonais, portugais, japonais, coréen, chinois simplifié, russe…) et l'assistant comprend et répond
+      dans encore davantage de langues.</p>
+    </details>
+  </div>
+</section>
 
-<h2>Mentions légales</h2>
-<p><strong>Éditeur du site et de l'application MonIA</strong><br>
-Olivier Saleur, micro-entrepreneur<br>
-15 rue des Îles, 60340 Saint-Leu-d'Esserent, France<br>
-SIRET&nbsp;: 106&nbsp;671&nbsp;837&nbsp;00016<br>
-TVA non applicable, article&nbsp;293&nbsp;B du CGI<br>
-Directeur de la publication&nbsp;: Olivier Saleur<br>
-Contact&nbsp;: <a href="mailto:support@monia.info">support@monia.info</a> · <a href="tel:+33972164197">+33 9 72 16 41 97</a></p>
-<p><strong>Hébergement du site</strong><br>
-GitHub, Inc. — GitHub Pages, 88 Colin P. Kelly Jr. St, San Francisco, CA 94107, États-Unis —
-<a href="https://pages.github.com">pages.github.com</a></p>
-<p><strong>Nom de domaine et messagerie</strong><br>
-OVH SAS, 2 rue Kellermann, 59100 Roubaix, France — <a href="https://www.ovh.com">ovh.com</a></p>
-
-<hr style="border: none; border-top: 1px solid rgba(127,127,127,.25); margin: 2.5rem 0;">
-
-<h1 lang="en">MonIA</h1>
-<p class="meta" lang="en">Private, on-device AI assistant for iPhone · One-time App&nbsp;Store purchase</p>
-
-<p lang="en">MonIA runs fully offline after setup. Your conversations stay on your device; we do not collect
-your data.</p>
-
-<h2 lang="en">Support</h2>
-<p lang="en">Questions, feedback or translation issues:<br>
-<strong><a href="mailto:support@monia.info?subject=MonIA%20%E2%80%94%20Support">support@monia.info</a></strong><br>
-<strong><a href="tel:+33972164197">+33 9 72 16 41 97</a></strong></p>
-
-<h2 lang="en">Legal</h2>
-<ul lang="en">
-  <li><a href="privacy_en.html">Privacy Policy (EN)</a></li>
-  <li><a href="privacy_fr.html">Politique de confidentialité (FR)</a></li>
-  <li><a href="terms_en.html">Terms of Use &amp; EULA (EN)</a></li>
-  <li><a href="terms_fr.html">Conditions générales d'utilisation (FR)</a></li>
-  <li><a href="open_source_notices.html">Open-Source Notices (EN)</a></li>
-</ul>
+<section>
+  <div class="wrap">
+    <h2>Une question&nbsp;?</h2>
+    <p>Écrivez-nous&nbsp;: <a href="mailto:support@monia.info?subject=MonIA%20%E2%80%94%20Support"><strong>support@monia.info</strong></a>
+    — nous répondons vite, et vos retours façonnent les prochaines versions.</p>
+  </div>
+</section>
 
 <footer>
-  <p>© MonIA · <a href="https://apps.apple.com/">Disponible sur l'App&nbsp;Store</a> (lien à activer après publication)</p>
+  <div class="wrap">
+    <p>© MonIA ·
+    <a href="support.html">Support &amp; mentions légales</a> ·
+    <a href="privacy_fr.html">Confidentialité</a> ·
+    <a href="terms_fr.html">CGU</a> ·
+    <a href="open_source_notices.html" lang="en">Open source</a> ·
+    <a href="en.html" lang="en">English</a></p>
+  </div>
 </footer>
 
 </body>
